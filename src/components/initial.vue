@@ -7,15 +7,49 @@
         type="text"
         class="form-control"
         id="question"
+        v-model="question"
         />
-    </div>
 
-    <button
+
+      <button
+      v-if="question"
         class="btn"
+        @click="handleNext"
     >
         Next
     </button>
+
+    <div v-if="error" class="error">
+    Your question is too short
+    </div>
+    </div>
+
   </div>
 </template>
 
-<script></script>
+<script>
+export default{
+  data(){
+    return{
+      question:'',
+      error:false
+    }
+  },
+  methods:{
+      handleNext(e){
+        e.preventDefault();
+
+        if(this.question.length <=5){
+          this.error = true;
+
+        }
+        else{
+          this.error = false;
+          this.$emit('goto',1);
+          this.$emit('question',this.question)
+        }
+
+      }
+  }
+}
+</script>
