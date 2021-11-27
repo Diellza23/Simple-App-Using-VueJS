@@ -10,10 +10,9 @@
         v-model="question"
         />
 
-
       <button
       v-if="question"
-        class="btn"
+        class="btn animate__animated animate__fadeIn"
         @click="handleNext"
     >
         Next
@@ -22,6 +21,7 @@
     <div v-if="error" class="error">
     Your question is too short
     </div>
+    
     </div>
 
   </div>
